@@ -11,7 +11,25 @@ const config = {
   },
   module: {
     rules: [
-      {test: /\.(js|jsx)$/, use: 'babel-loader'}
+      {
+        test: /\.(js|jsx)$/, 
+        use: [{
+          loader: "babel-loader",
+          options: { presets: ["es2015"] }
+        }]
+      },
+      {
+        test: /\.(sass|scss)$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
     ]
   },
   plugins: [
